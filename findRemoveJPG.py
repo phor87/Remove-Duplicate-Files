@@ -7,7 +7,8 @@ def findremovejpg(path):
 
     for files in dir_list:
         if files.endswith('JPG') and files[:-3] + 'DNG' in dir_list:  # if filename has both JPG and DNG extensions
+            print('Deleting', files)  # prints what file to be deleted
             os.remove(dir_name + files)  # removes filename.JPG
-            print(files, 'deleted')  # prints what file was deleted
+
 
 #findremovejpg('c:/Users/Paul/Desktop/test1/')
