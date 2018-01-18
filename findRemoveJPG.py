@@ -1,14 +1,16 @@
 import os
 
-def findremovejpg(path):
 
-    dir_name = path
-    dir_list = os.listdir(dir_name)  # list created from dir of folder path
+def checkforfiles(path):
 
-    for files in dir_list:
-        if files.endswith('JPG') and files[:-3] + 'DNG' in dir_list:  # if filename has both JPG and DNG extensions
-            print('Deleting', files)  # prints what file to be deleted
-            os.remove(dir_name + files)  # removes filename.JPG
+    for items in os.listdir(path):  # iterate dir in working path
+        if os.path.isdir(path + items):  # if the unc is a directory
+            checkforfiles(path + items + '/')
+        else:
+            if items.endswith('JPG') and items[:-3] + 'DNG' in os.listdir(path):  # if filename has both extensions
+                print('Deleting', items)  # prints what file to be deleted
+                os.remove(path + items)  # removes filename.JPG
 
 
-#findremovejpg('c:/Users/Paul/Desktop/test1/')
+#  checkforfiles('c:/Users/Paul/Desktop/year/')
+
